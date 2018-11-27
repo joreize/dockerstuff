@@ -1,0 +1,16 @@
+version: "3"
+networks:
+  public:
+    external: true
+
+services:
+
+  prometheus:
+    image: gitlab/gitlab-ce:latest
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host: "git.familie.reize.de"
+      traefik.port: "80"
+      traefik.protocol: "http"
+    networks:
+      - public
